@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    <struts>
+    	<package name="struts" extends="tiles-default">
+    		<action name="go" class="com.test.action.MyAction">
+    			<result name="success" type="tiles">background</result>
+    		</action>
+    	<action name="register" class="com.realestate.action.RegisterAction">
+			<result>/index.jsp</result>
+			<result name="input">/jsp/register.jsp</result>
+		</action>
+		<action name="AjaxAtion" class="com.realestate.action.AjaxAction">
+			<result name="input">/AjaxAction.jsp</result>
+		</action>
+		<action name="mytiles" class="com.test.MyTiles">
+			<result name="success" type="tiles">estateDetails</result>
+		</action>
+		<action name="ajaxLogin" class="com.realestate.action.Login">
+			<result name="input">/new.jsp</result>
+		</action>
+		
+		
+		<action name="UserListingAction" class="ajaxdemo.action.UserListingAction">
+            <result>/userlisting.jsp</result>
+        </action>
+        <action name="UserDetailAction" class="ajaxdemo.action.UserDetailAction">
+            <result>/userdetail.jsp</result>
+        </action>
+        
+        
+    	</package>
+    	
+    </struts>
