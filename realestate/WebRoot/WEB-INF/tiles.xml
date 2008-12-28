@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="myapp.homepage"
+		template="/tiles/template/layout.jsp">
+		<put-attribute name="title" value="Tiles tutorial homepage"></put-attribute>
+		<put-attribute name="header" value="/tiles/header.jsp"></put-attribute>
+		<put-attribute name="menu" value="/tiles/menu.jsp"></put-attribute>
+		<put-attribute name="body" value="/tiles/cBody.jsp"></put-attribute>
+		<put-attribute name="footer" value="/tiles/footer.jsp"></put-attribute>
+	</definition>
+
+
+	<definition name="Error" template="/jsp/template/error.jsp" />
+
+
+
+	<!-- 其它Tiles组件 -->
+	<definition name=".placard" template="/jsp/placard.jsp" preparer="" />	<!--公告栏控制器-->
+		
+
+	<definition name=".sellSortLeft" template="/jsp/sellSortLeft.jsp" preparer="" /><!--销售排行控制器-->
+	
+		
+	<definition name=".left"
+		template="/jsp/template/leftTemplate.jsp">
+		<put-attribute name="login" value="/jsp/login.jsp" />
+		<put-attribute name="placard" value=".placard" />
+		<put-attribute name="sellSortLeft" value=".sellSortLeft" /><!-- 左菜单 -->
+	</definition>
+	
+	<definition name=".typeList"
+		template="/jsp/productClass.jsp" />
+	
+	<definition name=".right"
+		template="/jsp/template/rightTemplate.jsp">
+		<put-attribute name="productClass" value=".typeList" />
+		<put-attribute name="guanggao" value="/jsp/guanggao.jsp" /><!-- 右菜单 -->
+	</definition>
+	
+	
+		<!--首页模板-->
+	<definition name=".indexLayout"
+		template="/jsp/template/indexTemplate.jsp">
+		<put-attribute name="title" value="房地产服务系统"></put-attribute><!--网站标题-->
+		<put-attribute name="navigation" value="/jsp/navigation.jsp" /><!--导航栏-->
+		<put-attribute name="left" value=".left" /><!--左菜单-->
+		<put-attribute name="content" value="/jsp/productInfo.jsp" /><!--内容分栏-->
+		<put-attribute name="right" value=".right" /><!--右菜单-->
+		<put-attribute name="footer" value="/jsp/footer.jsp" /><!--版权信息-->
+	</definition>
+	<definition name="test" template="/jsp/footer.jsp"></definition>
+	
+		<!--次页模板-->
+	<definition name=".myLayout"
+		template="/jsp/template/pageTemplate.jsp">
+		<put-attribute name="title" value="房地产服务系统" />							<!--网站标题-->
+		<put-attribute name="navigation" value="/jsp/navigation.jsp" />	<!--导航栏-->
+		<put-attribute name="left" value=".left" />								<!--左菜单-->
+		<put-attribute name="content" value="/jsp/productInfo.jsp" />		<!--内容分栏-->
+		<put-attribute name="footer" value="/jsp/footer.jsp" />			<!--版权信息-->
+	</definition>
+	
+	
+	<!-- 主页 -->
+	<definition name="index" extends=".indexLayout"></definition>
+	
+    <!--公告详细信息-->
+	<definition name="placardDetails" extends=".myLayout">
+		<put-attribute name="content" value="/jsp/placard_details.jsp" />
+	</definition>
+	<!-- 房产详细信息-->
+	<definition name="estateDetails" extends=".myLayout">
+		<put-attribute name="content" value="/jsp/estate_details.jsp" />
+	</definition>
+	
+	<!-- 套房详细信息 -->
+	<definition name="houseDetails" extends=".myLayout">
+		<put-attribute name="content" value="/jsp/house_details.jsp"/>
+	</definition>
+	
+	
+	
+	
+	<!-- 后台管理相关定义 -->
+	<!-- 后台主页面 -->
+	<definition name=".managerLayout" template="manage/template/indexTemplate.jsp">
+		<put-attribute name="title" value="房地产服务系统后台管理" />
+		<put-attribute name="banner" value="/manage/banner.jsp" />
+		<put-attribute name="left" value="/manage/left.jsp" />
+		<put-attribute name="footer" value="/jsp/footer.jsp" />
+	</definition>
+	<!-- 公告栏管理 -->
+	<definition name="placardmanage" extends=".managerLayout">
+		<put-attribute name="content" value="/manage/placardManage.jsp"></put-attribute>
+	</definition>
+	<!-- 注册用户管理 -->
+	<definition name="membermanage" extends=".managerLayout">
+		<put-attribute name="content" value="/manage/memberManage.jsp"></put-attribute>
+	</definition>
+	<!-- 房地产商管理 -->
+	<definition name="developermanage" extends=".managerLayout">
+		<put-attribute name="content" value="/manage/developerManage.jsp"></put-attribute>
+	</definition>
+		
+</tiles-definitions>
+
